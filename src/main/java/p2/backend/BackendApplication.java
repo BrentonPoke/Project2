@@ -189,36 +189,33 @@ public class BackendApplication implements CommandLineRunner {
         // food animal link
         Set<Food> food = new HashSet<>();
         food.add(rawFish);
-        food.add(rawMeat);
+        food.add(beef);
 
         lion.setFood(food);
+        cheetah.setFood(food);
 
         Set<Animal> animals = new HashSet<>();
         animals.add(lion);
+        animals.add(cheetah);
 
         rawFish.setAnimalFood(animals);
-        rawMeat.setAnimalFood(animals);
+        beef.setAnimalFood(animals);
 
         animalRepository.save(lion);
+        animalRepository.save(cheetah);
         foodRepository.save(rawFish);
-        foodRepository.save(rawMeat);
+        foodRepository.save(beef);
 
         // Animal to Employee
         Set<Animal> animalsToEmployee = new HashSet<>();
-        Set<Employee> employeetoAnimals = new HashSet<>();
 
         animalsToEmployee.add(giantPanda);
-        employeetoAnimals.add(jose);
-        employeetoAnimals.add(florina);
 
         jose.setAnimals(animalsToEmployee);
         florina.setAnimals(animalsToEmployee);
 
-        giantPanda.setEmployees(employeetoAnimals);
-
         employeeRepository.save(jose);
         employeeRepository.save(florina);
-        animalRepository.save(giantPanda);
     }
 }
 

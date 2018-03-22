@@ -1,5 +1,7 @@
 package p2.backend.Beans;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 
@@ -21,6 +23,7 @@ public class Location {
 
     @OneToOne(fetch = FetchType.EAGER,cascade=CascadeType.ALL)
     @JoinColumn(name = "animalId")
+    @JsonManagedReference
     private Animal animal;
 
     public Location() {

@@ -15,6 +15,5 @@ public interface AnimalRepository extends JpaRepository<Animal,Integer> {
     Animal findAnimalByAnimalName(String name);
     Set<Animal> findAnimalsByAnimalIdIsNotNull();
     Animal findAnimalByAnimalId(int id);
-    Set<Animal> findAnimalsByEmployees(Employee id);
 
 }
