@@ -74,7 +74,7 @@ public class BackendApplication implements CommandLineRunner {
         Employee jose = new Employee("Jose", "Soria","Jsoria",password,0);
         Employee semeon = new Employee("Semeon","De Barros","Sdebarros",password,0);
         Employee terrell = new Employee("Terrell","Moses","Tmoses",password,0);
-        Employee florina= new Employee("Florina","Singson","Fsingson",password,0);
+        Employee florina= new Employee("Florina","Singson","Fsingson",password,1);
 
         // Create all the Events
         Events one = new Events("Breakfast with Orangutan", "Kampung Sumatra","8:00 AM - 9:30 AM");
