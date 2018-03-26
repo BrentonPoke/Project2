@@ -72,7 +72,7 @@ public class BackendApplication implements CommandLineRunner {
         Employee spencer = new Employee("Spencer","Saunders","SSaunders",password,0);
         Employee brenton = new Employee("Brenton","Poke","Bpoke",password,0);
         Employee jose = new Employee("Jose", "Soria","Jsoria",password,0);
-        Employee semeon = new Employee("Semeon","Barros","A R De",password,0);
+        Employee semeon = new Employee("Semeon","De Barros","Sdebarros",password,0);
         Employee terrell = new Employee("Terrell","Moses","Tmoses",password,0);
         Employee florina= new Employee("Florina","Singson","Fsingson",password,0);
 
