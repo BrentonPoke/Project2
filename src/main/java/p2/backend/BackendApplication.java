@@ -10,9 +10,8 @@ import org.springframework.transaction.annotation.Transactional;
 import p2.backend.Beans.*;
 import p2.backend.Repository.*;
 
-import java.util.HashMap;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Set;
+import java.util.HashSet;
 
 @SpringBootApplication
 public class BackendApplication implements CommandLineRunner {
@@ -69,7 +68,7 @@ public class BackendApplication implements CommandLineRunner {
 
         //Create all the Employee
         String password = bCryptPasswordEncoder().encode("admin");
-        Employee noop = new Employee("Navroop","Hundal","NoopDog",password,0);
+        Employee noop = new Employee("Navroop","Hundal","NoopDog",password,1);
         Employee spencer = new Employee("Spencer","Saunders","SSaunders",password,0);
         Employee brenton = new Employee("Brenton","Poke","Bpoke",password,0);
         Employee jose = new Employee("Jose", "Soria","Jsoria",password,0);
@@ -203,40 +202,40 @@ public class BackendApplication implements CommandLineRunner {
 
         //Create links between everything
         // food-animal link
-        List<Food> foodAmericanAlligator = new ArrayList<>();
-        List<Food> foodAmericanBison = new ArrayList<>();
-        List<Food> foodAsianElephant = new ArrayList<>();
-        List<Food> foodAsianOtter = new ArrayList<>();
-        List<Food> foodBaldEagle = new ArrayList<>();
-        List<Food> foodBobcat = new ArrayList<>();
-        List<Food> foodCarpetPython = new ArrayList<>();
-        List<Food> foodCaliforniaSeaLion = new ArrayList<>();
-        List<Food> foodCheetah = new ArrayList<>();
-        List<Food> foodGiantPanda = new ArrayList<>();
-        List<Food> foodLion = new ArrayList<>();
-        List<Food> foodManedWolf = new ArrayList<>();
-        List<Food> foodOrangutan = new ArrayList<>();
-        List<Food> foodRedPanda = new ArrayList<>();
-        List<Food> foodTiger = new ArrayList<>();
-        List<Food> foodWesternLowlandGorilla = new ArrayList<>();
-        List<Food> foodGrayWolf = new ArrayList<>();
-        List<Food> foodGrevyZebra = new ArrayList<>();
-        List<Food> foodKomodoDragon = new ArrayList<>();
-        List<Food> foodGrayMouseLemur = new ArrayList<>();
+        Set<Food> foodAmericanAlligator = new HashSet<>();
+        Set<Food> foodAmericanBison = new HashSet<>();
+        Set<Food> foodAsianElephant = new HashSet<>();
+        Set<Food> foodAsianOtter = new HashSet<>();
+        Set<Food> foodBaldEagle = new HashSet<>();
+        Set<Food> foodBobcat = new HashSet<>();
+        Set<Food> foodCarpetPython = new HashSet<>();
+        Set<Food> foodCaliforniaSeaLion = new HashSet<>();
+        Set<Food> foodCheetah = new HashSet<>();
+        Set<Food> foodGiantPanda = new HashSet<>();
+        Set<Food> foodLion = new HashSet<>();
+        Set<Food> foodManedWolf = new HashSet<>();
+        Set<Food> foodOrangutan = new HashSet<>();
+        Set<Food> foodRedPanda = new HashSet<>();
+        Set<Food> foodTiger = new HashSet<>();
+        Set<Food> foodWesternLowlandGorilla = new HashSet<>();
+        Set<Food> foodGrayWolf = new HashSet<>();
+        Set<Food> foodGrevyZebra = new HashSet<>();
+        Set<Food> foodKomodoDragon = new HashSet<>();
+        Set<Food> foodGrayMouseLemur = new HashSet<>();
 
-        List<Animal> animalBamboo = new ArrayList<>();
-        List<Animal> animalBeef = new ArrayList<>();
-        List<Animal> animalEggs = new ArrayList<>();
-        List<Animal> animalFruits = new ArrayList<>();
-        List<Animal> animalHay = new ArrayList<>();
-        List<Animal> animalInsects = new ArrayList<>();
-        List<Animal> animalRodents = new ArrayList<>();
-        List<Animal> animalSeeds = new ArrayList<>();
-        List<Animal> animalTreeBark = new ArrayList<>();
-        List<Animal> animalVegetables = new ArrayList<>();
-        List<Animal> animalRawFish = new ArrayList<>();
-        List<Animal> animalRawMeat = new ArrayList<>();
-        List<Animal> animalCarrots = new ArrayList<>();
+        Set<Animal> animalBamboo = new HashSet<>();
+        Set<Animal> animalBeef = new HashSet<>();
+        Set<Animal> animalEggs = new HashSet<>();
+        Set<Animal> animalFruits = new HashSet<>();
+        Set<Animal> animalHay = new HashSet<>();
+        Set<Animal> animalInsects = new HashSet<>();
+        Set<Animal> animalRodents = new HashSet<>();
+        Set<Animal> animalSeeds = new HashSet<>();
+        Set<Animal> animalTreeBark = new HashSet<>();
+        Set<Animal> animalVegetables = new HashSet<>();
+        Set<Animal> animalRawFish = new HashSet<>();
+        Set<Animal> animalRawMeat = new HashSet<>();
+        Set<Animal> animalCarrots = new HashSet<>();
 
         // Select each animal for each food
         animalBamboo.add(giantPanda);
@@ -457,13 +456,13 @@ public class BackendApplication implements CommandLineRunner {
         foodRepository.save(carrots);
 
         // Animal to Employee
-        List<Animal> noopAnimal = new ArrayList<>();
-        List<Animal> spencerAnimal = new ArrayList<>();
-        List<Animal> brentonAnimal = new ArrayList<>();
-        List<Animal> joseAnimal = new ArrayList<>();
-        List<Animal> semeonAnimal = new ArrayList<>();
-        List<Animal> terrellAnimal = new ArrayList<>();
-        List<Animal> florinaAnimal = new ArrayList<>();
+        Set<Animal> noopAnimal = new HashSet<>();
+        Set<Animal> spencerAnimal = new HashSet<>();
+        Set<Animal> brentonAnimal = new HashSet<>();
+        Set<Animal> joseAnimal = new HashSet<>();
+        Set<Animal> semeonAnimal = new HashSet<>();
+        Set<Animal> terrellAnimal = new HashSet<>();
+        Set<Animal> florinaAnimal = new HashSet<>();
 
         // select which animal goes with each employee
         noopAnimal.add(tiger);

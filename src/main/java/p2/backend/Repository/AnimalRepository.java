@@ -13,6 +13,7 @@ import java.util.List;
 import java.util.Set;
 
 @Repository
+@Transactional
 public interface AnimalRepository extends JpaRepository<Animal,Integer> {
 
     Animal findAnimalByAnimalName(String name);

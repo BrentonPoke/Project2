@@ -50,7 +50,11 @@ public class UserController {
 		Employee emp = employeeService.byUsername(user.getUsername());
 		if (bCryptPasswordEncoder.matches(user.getPassword(), emp.getPassword())) {
 			try {
-				String role = "manager";
+				String role = "";
+				if(emp.getRole() == 0)
+				role = "manager";
+				else if (emp.getRole() == 1)
+					role = "owner";
 				Algorithm algorithmHS = Algorithm.HMAC512(SecurityConstants.SECRET);
 				String token = JWT.create()
 						.withAudience(role) //"Audience" is the means by which users are organized into groups

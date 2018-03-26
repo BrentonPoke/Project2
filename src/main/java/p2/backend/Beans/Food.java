@@ -36,7 +36,7 @@ public class Food {
     @JoinTable(name = "Food_Animal", joinColumns = @JoinColumn(name = "foodId", referencedColumnName = "foodId"),
             inverseJoinColumns = @JoinColumn(name = "animalId", referencedColumnName = "animalId"))
     @JsonIgnore
-    private List<Animal> animalFood;
+    private Set<Animal> animalFood;
 
     public Food(){
 
@@ -49,11 +49,11 @@ public class Food {
         this.notes = notes;
     }
 
-    public List<Animal> getAnimalFood() {
+    public Set<Animal> getAnimalFood() {
         return animalFood;
     }
 
-    public void setAnimalFood(List<Animal> animalFood) {
+    public void setAnimalFood(Set<Animal> animalFood) {
         this.animalFood = animalFood;
     }
 

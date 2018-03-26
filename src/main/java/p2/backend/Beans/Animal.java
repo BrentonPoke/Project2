@@ -41,11 +41,11 @@ public class Animal {
 
     @ManyToMany(mappedBy = "animalFood")
     @JsonManagedReference
-    private List<Food> food;
+    private Set<Food> food;
 
     @ManyToMany(mappedBy = "animals")
     @JsonIgnore
-    private List<Employee> employees;
+    private Set<Employee> employees;
 
     public Animal(){
 
@@ -61,7 +61,7 @@ public class Animal {
         this.notes = notes;
     }
 
-    public Animal(String animalName, String scientificName, String funFact, String summary, int numOfAnimal, int tracking, String notes, List<Food> food, List<Employee> employees) {
+    public Animal(String animalName, String scientificName, String funFact, String summary, int numOfAnimal, int tracking, String notes, Set<Food> food, Set<Employee> employees) {
         this.animalName = animalName;
         this.scientificName = scientificName;
         this.funFact = funFact;
@@ -128,19 +128,19 @@ public class Animal {
     public void setTracking(int tracking) {
         this.tracking = tracking;
     }
-    public List<Food> getFood() {
+    public Set<Food> getFood() {
         return food;
     }
 
-    public void setFood(List<Food> food) {
+    public void setFood(Set<Food> food) {
         this.food = food;
     }
 
-    public List<Employee> getEmployees() {
+    public Set<Employee> getEmployees() {
         return employees;
     }
 
-    public void setEmployees(List<Employee> employees) {
+    public void setEmployees(Set<Employee> employees) {
         this.employees = employees;
     }
 
