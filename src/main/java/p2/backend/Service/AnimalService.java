@@ -29,9 +29,6 @@ public class AnimalService {
     public Set<Animal> allAnimals(){
         return animalRepository.findAnimalsByAnimalIdIsNotNull();
     }
-    public Set<Animal> getAnimalsByEmployee(Employee id){
-        return animalRepository.findAnimalsByEmployees(id);
-    }
 
     public void saveAnimal (Animal save){
         animalRepository.save(save);

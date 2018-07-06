@@ -1,10 +1,11 @@
 package p2.backend.Beans;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.*;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import javax.persistence.*;
 import java.util.Objects;
@@ -13,6 +14,9 @@ import java.util.Set;
 
 @Entity
 @Table(name = "Food")
+@JsonIdentityInfo(
+        generator = ObjectIdGenerators.PropertyGenerator.class,
+        property = "foodId")
 public class Food {
 
     @Id @GeneratedValue(strategy = GenerationType.AUTO) @Column(name = "foodId")
@@ -33,7 +37,7 @@ public class Food {
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "Food_Animal", joinColumns = @JoinColumn(name = "foodId", referencedColumnName = "foodId"),
             inverseJoinColumns = @JoinColumn(name = "animalId", referencedColumnName = "animalId"))
-    @JsonIgnore
+    @JsonBackReference
     private Set<Animal> animalFood;
 
     public Food(){
@@ -116,12 +120,27 @@ public class Food {
 
     @Override
     public String toString() {
-        ObjectMapper mapper = new ObjectMapper();
-        ObjectNode json = mapper.createObjectNode();
-        json.put("foodName",foodName)
-                .put("amount",amount)
-                .put("nextDelivery",nextDelivery)
-                .put("notes",notes);
+        JSONObject json = new JSONObject();
+        try {
+            json.put("foodName",foodName)
+                    .put("amount",amount)
+                    .put("nextDelivery",nextDelivery)
+                    .put("notes",notes);
+//            JSONArray foodArray = new JSONArray();
+//            this.animalFood.forEach(animal -> {
+//                JSONObject animalFood = new JSONObject();
+//                try {
+//                    animalFood.put("animalId",animal.getAnimalId());
+//                    animalFood.put("animalName",animal.getAnimalName());
+//                } catch (JSONException e) {
+//                    e.printStackTrace();
+//                }
+//                foodArray.put(animalFood);
+//            });
+//            json.put("Animal",foodArray);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
         return json.toString();
     }
 
