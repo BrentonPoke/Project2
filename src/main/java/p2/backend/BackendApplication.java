@@ -26,17 +26,7 @@ public class BackendApplication implements CommandLineRunner {
 		return new BCryptPasswordEncoder(15);
 	}
 	public static void main(String[] args) {
-        Properties props = new Properties();
-        props.put("spring.datasource.url", "jdbc:postgresql://revature.cnhrcme3yxpn.us-east-1.rds.amazonaws.com/revdb");
-        props.put("spring.datasource.username","brenton");
-        props.put("spring.datasource.password","LotusBorn");
-        props.put("spring.jpa.database-platform","org.hibernate.dialect.PostgreSQLDialect");
-        props.setProperty("spring.datasource.driver-class-name","org.postgresql.Driver");
-        props.setProperty("spring.jpa.generate-ddl","true");
-        props.setProperty("spring.jpa.hibernate.ddl","auto=update");
-        SpringApplication application = new SpringApplication(BackendApplication.class);
-        application.setDefaultProperties(props);
-		application.run(args);
+        SpringApplication.run(BackendApplication.class, args);
 	}
 
     @Autowired
@@ -231,7 +221,5 @@ public class BackendApplication implements CommandLineRunner {
 //
 //        employeeRepository.save(jose);
 //        employeeRepository.save(florina);
-    }
-}
     }
 }
