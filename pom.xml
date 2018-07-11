@@ -5,7 +5,6 @@
 
 	<groupId>p2</groupId>
 	<artifactId>backend</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
 	<name>backend</name>
@@ -106,7 +105,7 @@
 				<version>2.0.3</version>
 				<configuration>
 					<processTypes>
-						<web>java $JAVA_OPTS -Dserver.port=$PORT -jar target/backend-0.0.1-SNAPSHOT.jar -cp target/classes:target/dependency/*</web>
+						<web>java $JAVA_OPTS -Dserver.port=$PORT -jar target/backend.jar -cp target/classes:target/dependency/*</web>
 					</processTypes>
 				</configuration>
 			</plugin>
