@@ -9,4 +9,5 @@ public class SecurityConstants {
 	public static final String SIGN_IN_URL = "/users/signin";
 	public static final String EVENTS = "/Events/";
 	public static final String ANIMALS = "/Animal/";
+	public static final String LOCATION = "/Location/";
 }
