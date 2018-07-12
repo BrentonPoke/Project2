@@ -32,16 +32,6 @@
 
 	<dependencies>
 		<dependency>
-			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-aws-context</artifactId>
-			<version>Finchley.RELEASE</version>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-aws-autoconfigure</artifactId>
-			<version>Finchley.RELEASE</version>
-		</dependency>
-		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
 		</dependency>
@@ -88,11 +78,7 @@
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-jar-plugin</artifactId>
 				<configuration>
-					<archive>
-						<manifest>
-							<mainClass>p2.backend.BackendApplication</mainClass>
-						</manifest>
-					</archive>
+					<finalName>backend</finalName>
 				</configuration>
 			</plugin>
 			<plugin>
@@ -104,6 +90,10 @@
 				<artifactId>heroku-maven-plugin</artifactId>
 				<version>2.0.3</version>
 				<configuration>
+					<includeTarget>false</includeTarget>
+					<includes>
+						<include>target/backend.jar</include>
+					</includes>
 					<processTypes>
 						<web>java $JAVA_OPTS -Dserver.port=$PORT -jar target/backend.jar -cp target/classes:target/dependency/*</web>
 					</processTypes>
