@@ -2,6 +2,7 @@ package p2.backend.Controller;
 
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
+import com.rollbar.notifier.Rollbar;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -13,8 +14,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.PostConstruct;
 import java.io.UnsupportedEncodingException;
 import java.util.Date;
+
+import static com.rollbar.notifier.config.ConfigBuilder.withAccessToken;
 
 @RestController
 @RequestMapping("/users")
@@ -22,6 +26,12 @@ public class UserController {
 	private EmployeeService employeeService;
 	private BCryptPasswordEncoder bCryptPasswordEncoder;
 	private Logger log;
+	Rollbar rollbar;
+
+	@PostConstruct
+	public void initialize() {
+		rollbar = Rollbar.init(withAccessToken("835183f1e67e40e991eecd67f6688f16").build());
+	}
 
 	@Autowired
 	public UserController(EmployeeService employeeService ,
@@ -61,7 +71,7 @@ public class UserController {
 				return new ResponseEntity<String>(token, HttpStatus.OK);
 
 			} catch (UnsupportedEncodingException e) {
-				log.error(e.getMessage());
+				rollbar.error(e.getMessage());
 			}
 
 		}
