@@ -1,5 +1,6 @@
 package p2.backend;
 
+import com.rollbar.notifier.config.Config;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -18,6 +19,9 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Properties;
 import java.util.Set;
+import static com.rollbar.notifier.config.ConfigBuilder.withAccessToken;
+import com.rollbar.notifier.Rollbar;
+
 
 @SpringBootApplication
 public class BackendApplication implements CommandLineRunner {
@@ -26,6 +30,9 @@ public class BackendApplication implements CommandLineRunner {
 		return new BCryptPasswordEncoder(15);
 	}
 	public static void main(String[] args) {
+
+        Rollbar rollbar = Rollbar.init(withAccessToken("835183f1e67e40e991eecd67f6688f16").build());
+        rollbar.log("Hello, Rollbar");
         SpringApplication.run(BackendApplication.class, args);
 	}
 
