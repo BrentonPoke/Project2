@@ -31,12 +31,13 @@ public class BackendApplication implements CommandLineRunner {
 	}
 	public static void main(String[] args) {
 
-        Rollbar rollbar = Rollbar.init(withAccessToken("835183f1e67e40e991eecd67f6688f16").build());
+        Rollbar rollbar = Rollbar.init(withAccessToken("ace12982e3e546f39847979667d97939").environment("development")
+                .codeVersion("1.2.1").build());
        try{
            SpringApplication.run(BackendApplication.class, args);
        }
         catch (Exception e){
-            rollbar.error(e.getLocalizedMessage());
+            rollbar.error(e.getMessage());
         };
 	}
 

@@ -3,13 +3,16 @@ package p2.backend.security;
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.JWTVerifier;
 import com.auth0.jwt.algorithms.Algorithm;
+import com.auth0.jwt.exceptions.TokenExpiredException;
 import com.auth0.jwt.interfaces.DecodedJWT;
+import com.rollbar.notifier.Rollbar;
 import org.apache.logging.log4j.Logger;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.www.BasicAuthenticationFilter;
 
+import javax.annotation.PostConstruct;
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -17,10 +20,18 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
+
+import static com.rollbar.notifier.config.ConfigBuilder.withAccessToken;
 import static p2.backend.security.SecurityConstants.*;
 
 public class JWTAuthorizationFilter extends BasicAuthenticationFilter {
-    private Logger logger;
+    private Rollbar logger;
+
+	@PostConstruct
+	public void initialize() {
+		logger = Rollbar.init(withAccessToken("ace12982e3e546f39847979667d97939").environment("development")
+				.codeVersion("1.2.1").build());
+	}
 
 	public JWTAuthorizationFilter(AuthenticationManager authManager) {
 		super(authManager);
@@ -54,22 +65,24 @@ public class JWTAuthorizationFilter extends BasicAuthenticationFilter {
 			} catch (UnsupportedEncodingException e) {
 			    logger.error(e.getMessage());
 			}
-			JWTVerifier verifier = JWT.require(algorithm)
-					.withIssuer(jwt.getIssuer())
-					.withSubject(jwt.getSubject())
-					.build();
-			DecodedJWT user = verifier.verify(jwt.getToken());
+				JWTVerifier verifier = JWT.require(algorithm)
+						.withIssuer(jwt.getIssuer())
+						.withSubject(jwt.getSubject())
+						.build();
 
-/*-------Old code using io.jsonwebtoken.Jwts library. Works, but only want to use one library.----*/
+				DecodedJWT user = verifier.verify(jwt.getToken());
+
+				/*-------Old code using io.jsonwebtoken.Jwts library. Works, but only want to use one library.----*/
 //			String user = Jwts.parser()
 //					.setSigningKey(SECRET.getBytes())
 //					.parseClaimsJws(token.replace(TOKEN_PREFIX, ""))
 //					.getBody()
 //					.getSubject();
 
-			if (user.getSubject() != null) {
-				return new UsernamePasswordAuthenticationToken(user.getSubject(), null, new ArrayList<>());
-			}
+				if (user.getSubject() != null) {
+					return new UsernamePasswordAuthenticationToken(user.getSubject(), null, new ArrayList<>());
+				}
+
 			return null;
 		}
 		return null;

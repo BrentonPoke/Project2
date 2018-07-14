@@ -30,7 +30,8 @@ public class UserController {
 
 	@PostConstruct
 	public void initialize() {
-		rollbar = Rollbar.init(withAccessToken("835183f1e67e40e991eecd67f6688f16").build());
+		rollbar = Rollbar.init(withAccessToken("ace12982e3e546f39847979667d97939").environment("production")
+				.codeVersion("1.2.1").build());
 	}
 
 	@Autowired
@@ -43,6 +44,12 @@ public class UserController {
 	@PostMapping("/info")
 	public @ResponseBody ResponseEntity<String> info(@RequestBody Employee user){
 		Employee emp = employeeService.getByID(user.getEmployeeId());
+		return new ResponseEntity<String>(emp.toString(),HttpStatus.OK);
+	}
+
+	@PostMapping("/user")
+	public @ResponseBody ResponseEntity<String> user(@RequestBody Employee user){
+		Employee emp = employeeService.byUsername(user.getUsername());
 		return new ResponseEntity<String>(emp.toString(),HttpStatus.OK);
 	}
 
@@ -75,6 +82,7 @@ public class UserController {
 			}
 
 		}
+		rollbar.error("There was an issue with authentication.");
 		return new ResponseEntity<String>("There was an issue with authentication.", HttpStatus.FORBIDDEN);
 	}
 
