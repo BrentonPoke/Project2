@@ -5,25 +5,32 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 
-import javax.persistence.*;
+//import javax.persistence.*;
 import java.util.Objects;
+import javax.persistence.GenerationType;
+import org.neo4j.ogm.annotation.GeneratedValue;
+import org.neo4j.ogm.annotation.Id;
+import org.neo4j.ogm.annotation.NodeEntity;
+import org.neo4j.ogm.annotation.Relationship;
 
-@Entity
-@Table(name="Location")
+@NodeEntity
+//@Table(name="Location")
 public class Location {
 
-    @Id @GeneratedValue(strategy = GenerationType.AUTO) @Column(name = "locationId")
+    @Id
+    @GeneratedValue //@Column(name = "locationId")
     private int locationId;
 
-    @Column(name = "latitude")
+   // @Column(name = "latitude")
     private Double latitude;
 
-    @Column(name = "longitude")
+   // @Column(name = "longitude")
     private Double longitude;
 
-    @OneToOne(fetch = FetchType.EAGER,cascade=CascadeType.ALL)
+   /* @OneToOne(fetch = FetchType.EAGER,cascade=CascadeType.ALL)
     @JoinColumn(name = "animalId")
-    @JsonManagedReference
+    @JsonManagedReference */
+   @Relationship(type = "LOCATED_AT", direction = Relationship.UNDIRECTED)
     private Animal animal;
 
     public Location() {

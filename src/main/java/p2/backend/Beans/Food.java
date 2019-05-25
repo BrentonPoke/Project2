@@ -7,38 +7,41 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import javax.persistence.*;
 import java.util.Objects;
 import java.util.Set;
+import org.neo4j.ogm.annotation.GeneratedValue;
+import org.neo4j.ogm.annotation.Id;
+import org.neo4j.ogm.annotation.NodeEntity;
+import org.neo4j.ogm.annotation.Relationship;
 
 
-@Entity
-@Table(name = "Food")
+@NodeEntity
 @JsonIdentityInfo(
         generator = ObjectIdGenerators.PropertyGenerator.class,
         property = "foodId")
 public class Food {
 
-    @Id @GeneratedValue(strategy = GenerationType.AUTO) @Column(name = "foodId")
+    @Id
+    @GeneratedValue// @Column(name = "foodId")
     private int foodId;
 
-    @Column(name = "foodName")
+   // @Column(name = "foodName")
     private String foodName;
 
-    @Column(name ="amount")
+   // @Column(name ="amount")
     private int amount;
 
-    @Column(name="nextDelivery")
+   // @Column(name="nextDelivery")
     private String nextDelivery;
 
-    @Column(name="notes")
+   // @Column(name="notes")
     private String notes;
 
-    @ManyToMany(cascade = CascadeType.ALL)
+   /* @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "Food_Animal", joinColumns = @JoinColumn(name = "foodId", referencedColumnName = "foodId"),
             inverseJoinColumns = @JoinColumn(name = "animalId", referencedColumnName = "animalId"))
-    @JsonBackReference
-    private Set<Animal> animalFood;
+    @JsonBackReference */
+    //private Set<Animal> animalFood;
 
     public Food(){
 
@@ -49,14 +52,6 @@ public class Food {
         this.amount = amount;
         this.nextDelivery = nextDelivery;
         this.notes = notes;
-    }
-
-    public Set<Animal> getAnimalFood() {
-        return animalFood;
-    }
-
-    public void setAnimalFood(Set<Animal> animalFood) {
-        this.animalFood = animalFood;
     }
 
     public int getFoodId() {
@@ -108,8 +103,8 @@ public class Food {
                 amount == food.amount &&
                 Objects.equals(foodName, food.foodName) &&
                 Objects.equals(nextDelivery, food.nextDelivery) &&
-                Objects.equals(notes, food.notes) &&
-                Objects.equals(animalFood, food.animalFood);
+                Objects.equals(notes, food.notes /* &&
+                Objects.equals(animalFood, food.animalFood*/);
     }
 
     @Override

@@ -7,40 +7,44 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import javax.persistence.*;
 import java.util.List;
 import java.util.Objects;
 import java.util.Set;
+import org.neo4j.ogm.annotation.GeneratedValue;
+import org.neo4j.ogm.annotation.Id;
+import org.neo4j.ogm.annotation.NodeEntity;
+import org.neo4j.ogm.annotation.Relationship;
 
-@Entity
-@Table(name = "Employee")
-
+@NodeEntity
+//Table(name = "Employee")
 @JsonIdentityInfo(
         generator=ObjectIdGenerators.PropertyGenerator.class,
         property="employeeId")
 
 public class Employee {
-    @Id @GeneratedValue(strategy = GenerationType.AUTO) @Column(name = "employeeId")
+    @Id
+    @GeneratedValue // @Column(name = "employeeId")
     private int employeeId;
 
-    @Column(name = "firstName")
+   // @Column(name = "firstName")
     private String firstName;
 
-    @Column(name = "lastName")
+   // @Column(name = "lastName")
     private String lastName;
 
-    @Column(name = "username")
+   // @Column(name = "username")
     private String username;
 
-    @Column(name = "password")
+   // @Column(name = "password")
     private String password;
 
-    @Column(name = "role")
+   // @Column(name = "role")
     private int role;
 
-    @ManyToMany(cascade = CascadeType.ALL)
+   /* @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "Employee_Animal", joinColumns = @JoinColumn(name = "employeeId", referencedColumnName = "employeeId"),
-            inverseJoinColumns = @JoinColumn(name = "animalId", referencedColumnName = "animalId"))
+            inverseJoinColumns = @JoinColumn(name = "animalId", referencedColumnName = "animalId")) */
+   @Relationship(type = "FEEDS")
     private Set<Animal> animals;
 
     public Employee() {

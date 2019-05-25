@@ -57,7 +57,7 @@ class FoodFactory implements EquivalentFactory<Food> {
         Set<Animal> animals = new HashSet<>();
         animals.add(mockAnimal1);
         animals.add(mockAnimal2);
-        mockFood.setAnimalFood(animals);
+       // mockFood.setAnimalFood(animals);
 
         return mockFood;
     }

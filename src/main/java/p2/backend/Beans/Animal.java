@@ -5,44 +5,49 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import javax.persistence.GenerationType;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import javax.persistence.*;
 import java.util.Objects;
 import java.util.Set;
+import org.neo4j.ogm.annotation.GeneratedValue;
+import org.neo4j.ogm.annotation.Id;
+import org.neo4j.ogm.annotation.NodeEntity;
+import org.neo4j.ogm.annotation.Relationship;
 
-@Entity
-@Table(name = "animal")
+@NodeEntity
 @JsonIdentityInfo(
         generator = ObjectIdGenerators.PropertyGenerator.class,
         property = "animalId")
 public class Animal {
-    @Id @GeneratedValue(strategy = GenerationType.AUTO) @Column(name = "animalId")
+    @Id
+    @GeneratedValue //@Column(name = "animalId")
     private int animalId;
 
-    @Column(name = "animalName")
+   // @Column(name = "animalName")
     private String animalName;
 
-    @Column(name = "scientificName")
+   // @Column(name = "scientificName")
     private String scientificName;
 
-    @Column(name = "funFact",columnDefinition = "text")
+   // @Column(name = "funFact",columnDefinition = "text")
     private String funFact;
 
-    @Column(name = "summary",columnDefinition = "text")
+   // @Column(name = "summary",columnDefinition = "text")
     private String summary;
 
-    @Column(name = "numOfAnimal")
+   // @Column(name = "numOfAnimal")
     private int numOfAnimal;
 
-    @Column(name = "tracking")
+   // @Column(name = "tracking")
     private int tracking;
 
-    @Column(name = "notes",columnDefinition = "text")
+   // @Column(name = "notes",columnDefinition = "text")
     private String notes;
 
-    @ManyToMany(mappedBy = "animalFood")
+   // @ManyToMany(mappedBy = "animalFood")
+    @Relationship(type = "EATS")
     private Set<Food> food;
 
 

@@ -3,22 +3,25 @@ package p2.backend.Beans;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 
-import javax.persistence.*;
 import java.util.Objects;
+import org.neo4j.ogm.annotation.GeneratedValue;
+import org.neo4j.ogm.annotation.Id;
+import org.neo4j.ogm.annotation.NodeEntity;
 
-@Entity
-@Table(name = "Events")
+@NodeEntity
+//@Table(name = "Events")
 public class Events {
-    @Id @GeneratedValue(strategy = GenerationType.AUTO) @Column(name = "eventId")
+    @Id
+    @GeneratedValue // @Column(name = "eventId")
     private int eventId;
 
-    @Column(name = "what")
+   // @Column(name = "what")
     private String what;
 
-    @Column(name = "location")
+   // @Column(name = "location")
     private String where;
 
-    @Column(name = "time")
+   // @Column(name = "time")
     private String when;
 
     public Events(){
