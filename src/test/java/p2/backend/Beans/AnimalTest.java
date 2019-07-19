@@ -53,7 +53,7 @@ class AnimalFactory implements EquivalentFactory<Animal> {
         Set<Employee> employees = new HashSet<>();
         employees.add(emp);
         Animal mockAnimal = new Animal("Spencer", "sci name", "fun fact",
-                "summary", 1, 1, "notes", mockFood);
+                "summary", 1, 1, "notes");
 
         return mockAnimal;
     }

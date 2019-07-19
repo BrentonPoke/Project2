@@ -57,7 +57,7 @@ class EmployeeFactory implements EquivalentFactory<Employee> {
         animals.add(mockAnimal2);
 //        Employee mockEmployee = new Employee("First Name", "Last Name", "Username", "Password", 1);
 //        mockEmployee.setAnimals(animals);
-        Employee anotherMockEmployee = new Employee("First Name Also", "Last Name Also", "Username Also", "Password Also", 1, animals);
+        Employee anotherMockEmployee = new Employee("First Name Also", "Last Name Also", "Username Also", "Password Also", 1);
         return anotherMockEmployee;
     }
 

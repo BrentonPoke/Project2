@@ -1,7 +1,5 @@
 package p2.backend.Beans;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 
@@ -10,7 +8,6 @@ import java.util.Objects;
 import org.neo4j.ogm.annotation.GeneratedValue;
 import org.neo4j.ogm.annotation.Id;
 import org.neo4j.ogm.annotation.NodeEntity;
-import org.neo4j.ogm.annotation.Relationship;
 
 @NodeEntity
 //@Table(name="Location")
@@ -29,16 +26,14 @@ public class Location {
    /* @OneToOne(fetch = FetchType.EAGER,cascade=CascadeType.ALL)
     @JoinColumn(name = "animalId")
     @JsonManagedReference */
-   @Relationship(type = "LOCATED_AT", direction = Relationship.UNDIRECTED)
-    private Animal animal;
+   //@Relationship(type = "LOCATED_AT", direction = Relationship.INCOMING)
 
-    public Location() {
+  public Location() {
     }
 
-    public Location(Double latitude, Double longitude, Animal animal) {
+    public Location(Double latitude, Double longitude) {
         this.latitude = latitude;
         this.longitude = longitude;
-        this.animal = animal;
     }
 
     public int getLocationId() {
@@ -64,15 +59,6 @@ public class Location {
     public void setLongitude(Double longitude) {
         this.longitude = longitude;
     }
-
-    public Animal getAnimal() {
-        return animal;
-    }
-
-    public void setAnimal(Animal animal) {
-        this.animal = animal;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -80,14 +66,13 @@ public class Location {
         Location location = (Location) o;
         return locationId == location.locationId &&
                 Objects.equals(latitude, location.latitude) &&
-                Objects.equals(longitude, location.longitude) &&
-                Objects.equals(animal, location.animal);
+                Objects.equals(longitude, location.longitude);
     }
 
     @Override
     public int hashCode() {
 
-        return Objects.hash(locationId, latitude, longitude, animal);
+        return Objects.hash(locationId, latitude, longitude);
     }
 
     @Override
@@ -96,7 +81,7 @@ public class Location {
         ObjectNode json = mapper.createObjectNode();
         json.put("id",locationId)
                 .put("latitude",latitude)
-                .put("longitude",longitude).putPOJO("animal",animal);
+                .put("longitude",longitude);
         return json.toString();
     }
 }

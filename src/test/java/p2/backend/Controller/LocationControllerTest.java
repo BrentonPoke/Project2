@@ -41,8 +41,8 @@ public class LocationControllerTest {
     @MockBean
     private LocationService locationService;
     Animal mockAnimal = null;//new Animal("Spencer", "Mathematician turnedprogrammer","likes math", "loves math", 1, 1, "notes");
-    Location loc1 = new Location(1.234, 1.234, mockAnimal);
-    Location loc2 = new Location(5.678, 5.678, mockAnimal);
+    Location loc1 = new Location(1.234, 1.234);
+    Location loc2 = new Location(5.678, 5.678);
 
 
 

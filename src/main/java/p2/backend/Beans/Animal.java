@@ -1,9 +1,7 @@
 package p2.backend.Beans;
 
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -14,6 +12,8 @@ import org.neo4j.ogm.annotation.GeneratedValue;
 import org.neo4j.ogm.annotation.Id;
 import org.neo4j.ogm.annotation.NodeEntity;
 import org.neo4j.ogm.annotation.Relationship;
+import p2.backend.Beans.Relationships.Caretaker;
+import p2.backend.Beans.Relationships.Diet;
 
 @NodeEntity
 @JsonIdentityInfo(
@@ -46,11 +46,15 @@ public class Animal {
     private String notes;
 
    // @ManyToMany(mappedBy = "animalFood")
-    @Relationship(type = "EATS", direction = Relationship.OUTGOING)
-    private Set<Food> food;
+    @Relationship(type = "EATS")
+    private Set<Diet> food;
+
+    @Relationship(type = "FEEDS", direction = Relationship.INCOMING)
+    private Set<Caretaker> employees;
+    private Location site;
 
 
-    public Animal(){
+  public Animal(){
 
     }
 
@@ -64,7 +68,7 @@ public class Animal {
         this.notes = notes;
     }
 
-    public Animal(String animalName, String scientificName, String funFact, String summary, int numOfAnimal, int tracking, String notes, Set<Food> food) {
+    public Animal(String animalName, String scientificName, String funFact, String summary, int numOfAnimal, int tracking, String notes, Set<Diet> food) {
         this.animalName = animalName;
         this.scientificName = scientificName;
         this.funFact = funFact;
@@ -74,7 +78,21 @@ public class Animal {
         this.notes = notes;
         this.food = food;
     }
+  public Set<Caretaker> getEmployees() {
+    return employees;
+  }
 
+  public void setEmployees(Set<Caretaker> employees) {
+    this.employees = employees;
+  }
+
+  public Location getSite() {
+    return site;
+  }
+
+  public void setSite(Location site) {
+    this.site = site;
+  }
     public int getAnimalId() {
         return animalId;
     }
@@ -139,11 +157,11 @@ public class Animal {
         this.notes = notes;
     }
 
-    public Set<Food> getFood() {
+    public Set<Diet> getFood() {
         return food;
     }
 
-    public void setFood(Set<Food> food) {
+    public void setFood(Set<Diet> food) {
         this.food = food;
     }
 

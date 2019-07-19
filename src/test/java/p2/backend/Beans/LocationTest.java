@@ -43,7 +43,7 @@ class LocationFactory implements EquivalentFactory<Location> {
     @Override
     public Location create() {
         Animal mockAnimal = new Animal();
-        Location mockLocation = new Location(1.234, 5.678, mockAnimal);
+        Location mockLocation = new Location(1.234, 5.678);
 
         return mockLocation;
     }

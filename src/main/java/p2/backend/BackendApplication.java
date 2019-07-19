@@ -55,8 +55,6 @@ public class BackendApplication implements CommandLineRunner {
     @Autowired
     FoodRepository foodRepository;
 
-    @Autowired
-    LocationRepository locationRepository;
 
     @Transactional
     @Override
@@ -118,23 +116,37 @@ public class BackendApplication implements CommandLineRunner {
 
 
         // Create all the Locations
-        Location lAmericanAlligator = new Location(38.9299392,-77.0476189,americanAlligator);
-        Location lAmericanBison = new Location(38.931416, -77.052703,americanBison);
-        Location lAsianElephant = new Location(38.931215, -77.050295,asianElephant);
-        Location lAsianOtter = new Location(38.931103, -77.052868,asianOtter);
-        Location lBaldEagle = new Location(38.930536, -77.049306,baldEagle);
-        Location lBobcat = new Location(38.9299392,-77.0476189,bobcat);
-        Location lCarpetPython = new Location(38.9297635,-77.0475369,carpetPython);
-        Location lCaliforniaSeaLion = new Location(38.9290841,-77.0492791,californiaSeaLion);
-        Location lCheetah = new Location(38.930897, -77.053289,cheetah);
-        Location lGiantPanda = new Location(38.931196, -77.052790,giantPanda);
-        Location lLion = new Location(38.928470, -77.046083,lion);
-        Location lManedWolf = new Location(38.930575, -77.053585,manedWolf);
-        Location lOrangutan = new Location(38.929801, -77.048068,orangutan);
-        Location lRedPanda = new Location(38.931110, -77.052924,redPanda);
-        Location lTiger = new Location(38.928793, -77.046424,tiger);
-        Location lWesternLowlandGorilla = new Location(38.930138, -77.048323,westernLowlandGorilla);
+        Location lAmericanAlligator = new Location(38.9299392,-77.0476189);
+        Location lAmericanBison = new Location(38.931416, -77.052703);
+        Location lAsianElephant = new Location(38.931215, -77.050295);
+        Location lAsianOtter = new Location(38.931103, -77.052868);
+        Location lBaldEagle = new Location(38.930536, -77.049306);
+        Location lBobcat = new Location(38.9299392,-77.0476189);
+        Location lCarpetPython = new Location(38.9297635,-77.0475369);
+        Location lCaliforniaSeaLion = new Location(38.9290841,-77.0492791);
+        Location lCheetah = new Location(38.930897, -77.053289);
+        Location lGiantPanda = new Location(38.931196, -77.052790);
+        Location lLion = new Location(38.928470, -77.046083);
+        Location lManedWolf = new Location(38.930575, -77.053585);
+        Location lOrangutan = new Location(38.929801, -77.048068);
+        Location lRedPanda = new Location(38.931110, -77.052924);
+        Location lTiger = new Location(38.928793, -77.046424);
+        Location lWesternLowlandGorilla = new Location(38.930138, -77.048323);
 
+        americanAlligator.setSite(lAmericanAlligator);
+        americanBison.setSite(lAmericanBison);
+        asianElephant.setSite(lAsianElephant);
+        asianOtter.setSite(lAsianOtter);
+        baldEagle.setSite(lBaldEagle);
+        bobcat.setSite(lBobcat);
+        carpetPython.setSite(lCarpetPython);
+        californiaSeaLion.setSite(lCaliforniaSeaLion);
+        giantPanda.setSite(lGiantPanda);
+        manedWolf.setSite(lManedWolf);
+        orangutan.setSite(lOrangutan);
+        redPanda.setSite(lRedPanda);
+        tiger.setSite(lTiger);
+        westernLowlandGorilla.setSite(lWesternLowlandGorilla);
 
         //save them all
         animalRepository.save(americanAlligator);
@@ -151,6 +163,8 @@ public class BackendApplication implements CommandLineRunner {
         animalRepository.save(redPanda);
         animalRepository.save(tiger);
         animalRepository.save(westernLowlandGorilla);
+        animalRepository.save(lion);
+        animalRepository.save(cheetah);
 
         employeeRepository.save(noop);
         employeeRepository.save(spencer);
@@ -184,56 +198,49 @@ public class BackendApplication implements CommandLineRunner {
         foodRepository.save(carrots);
 
 
-        locationRepository.save(lAmericanAlligator);
-        locationRepository.save(lAmericanBison);
-        locationRepository.save(lAsianElephant);
-        locationRepository.save(lAsianOtter);
-        locationRepository.save(lBaldEagle);
-        locationRepository.save(lBobcat);
-        locationRepository.save(lCarpetPython);
-        locationRepository.save(lCaliforniaSeaLion);
-        locationRepository.save(lCheetah);
-        locationRepository.save(lGiantPanda);
-        locationRepository.save(lLion);
-        locationRepository.save(lManedWolf);
-        locationRepository.save(lOrangutan);
-        locationRepository.save(lRedPanda);
-        locationRepository.save(lTiger);
-        locationRepository.save(lWesternLowlandGorilla);
+//        locationRepository.save(lAmericanAlligator);
+//        locationRepository.save(lAmericanBison);
+//        locationRepository.save(lAsianElephant);
+//        locationRepository.save(lAsianOtter);
+//        locationRepository.save(lBaldEagle);
+//        locationRepository.save(lBobcat);
+//        locationRepository.save(lCarpetPython);
+//        locationRepository.save(lCaliforniaSeaLion);
+//        locationRepository.save(lCheetah);
+//        locationRepository.save(lGiantPanda);
+//        locationRepository.save(lLion);
+//        locationRepository.save(lManedWolf);
+//        locationRepository.save(lOrangutan);
+//        locationRepository.save(lRedPanda);
+//        locationRepository.save(lTiger);
+//        locationRepository.save(lWesternLowlandGorilla);
 
 
         //Create links between everything
         // food animal link
-        Set<Food> food = new HashSet<>();
-        food.add(rawFish);
-        food.add(beef);
+//        Set<Food> food = new HashSet<>();
+//        food.add(rawFish);
+//        food.add(beef);
+//        lion.setFood(food);
+//        cheetah.setFood(food);
+//        food.add(rawMeat);
+//        bobcat.setFood(food);
 
-        lion.setFood(food);
-        cheetah.setFood(food);
-        food.add(rawMeat);
-        bobcat.setFood(food);
-
-        Set<Animal> animals = new HashSet<>();
-        animals.add(lion);
-        animals.add(cheetah);
+//        Set<Animal> animals = new HashSet<>();
+//        animals.add(lion);
+//        animals.add(cheetah);
 
 //        rawFish.setAnimalFood(animals);
 //        beef.setAnimalFood(animals);
-
-        animalRepository.save(lion);
-        animalRepository.save(cheetah);
 //        foodRepository.save(rawFish);
 //        foodRepository.save(beef);
 
         // Animal to Employee
-        Set<Animal> animalsToEmployee = new HashSet<>();
+//        Set<Animal> animalsToEmployee = new HashSet<>();
+//
+//        animalsToEmployee.add(giantPanda);
 
-        animalsToEmployee.add(giantPanda);
-
-        jose.setAnimals(animalsToEmployee);
-        florina.setAnimals(animalsToEmployee);
-
-        employeeRepository.save(jose);
-        employeeRepository.save(florina);
+//        jose.setAnimals(animalsToEmployee);
+//        florina.setAnimals(animalsToEmployee);
     }
 }

@@ -70,7 +70,7 @@ public class UserControllerTest {
     public void info() throws Exception{
         mockAnimal.setAnimalId(1);
         animals.add(mockAnimal);
-        mockEmployee.setAnimals(animals);
+        //mockEmployee.setAnimals(animals);
         String exampleJson = "{\"username\": \"usrnm\", \"password\": \"psswrd\"}";
 
         Mockito.when(employeeService.getByID(Mockito.anyInt())).thenReturn(mockEmployee);
@@ -114,7 +114,7 @@ public class UserControllerTest {
         String password = bCryptPasswordEncoder().encode("psswrd");
         mockEmployee.setPassword(password);
         animals.add(mockAnimal);
-        mockEmployee.setAnimals(animals);
+       // mockEmployee.setAnimals(animals);
 
         String exampleJson = "{\"firstName\": \"alpha\", \"lastName\": \"omega\", \"username\": \"usrnm\", \"password\": \"psswrd\", \"role\": 1}";
         //Algorithm algorithmHS = Algorithm.HMAC512(SecurityConstants.SECRET);
@@ -141,7 +141,7 @@ public class UserControllerTest {
         String password = bCryptPasswordEncoder().encode("wrongpassword");
         mockEmployee.setPassword(password);
         animals.add(mockAnimal);
-        mockEmployee.setAnimals(animals);
+        //mockEmployee.setAnimals(animals);
 
         String exampleJson = "{\"firstName\": \"alpha\", \"lastName\": \"omega\", \"username\": \"usrnm\", \"password\": \"psswrd\", \"role\": 1}";
         //Algorithm algorithmHS = Algorithm.HMAC512(SecurityConstants.SECRET);

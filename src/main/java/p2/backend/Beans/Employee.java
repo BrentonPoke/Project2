@@ -3,6 +3,7 @@ package p2.backend.Beans;
 import com.fasterxml.jackson.annotation.*;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
+import java.util.HashSet;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -14,6 +15,7 @@ import org.neo4j.ogm.annotation.GeneratedValue;
 import org.neo4j.ogm.annotation.Id;
 import org.neo4j.ogm.annotation.NodeEntity;
 import org.neo4j.ogm.annotation.Relationship;
+import p2.backend.Beans.Relationships.Caretaker;
 
 @NodeEntity
 //Table(name = "Employee")
@@ -45,9 +47,9 @@ public class Employee {
     @JoinTable(name = "Employee_Animal", joinColumns = @JoinColumn(name = "employeeId", referencedColumnName = "employeeId"),
             inverseJoinColumns = @JoinColumn(name = "animalId", referencedColumnName = "animalId")) */
    @Relationship(type = "FEEDS")
-    private Set<Animal> animals;
+    private Set<Caretaker> caretakers;
 
-    public Employee() {
+  public Employee() {
     }
 
     public Employee(String firstName, String lastName, String username, String password, int role) {
@@ -58,13 +60,14 @@ public class Employee {
         this.role = role;
     }
 
-    public Employee(String firstName, String lastName, String username, String password, int role, Set<Animal> animals) {
+    public Employee(String firstName, String lastName, String username, String password, int role, Set<Caretaker> caretakers) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.username = username;
         this.password = password;
         this.role = role;
-        this.animals = animals;
+        this.caretakers = caretakers;
+
     }
 
     public int getEmployeeId() {
@@ -114,14 +117,14 @@ public class Employee {
     public void setRole(int role) {
         this.role = role;
     }
+  public Set<Caretaker> getCaretakers() {
+    return caretakers;
+  }
 
-    protected Set<Animal> getAnimals() {
-        return animals;
-    }
+  public void setCaretakers(Set<Caretaker> caretakers) {
+    this.caretakers = caretakers;
+  }
 
-    public void setAnimals(Set<Animal> animals) {
-        this.animals = animals;
-    }
 
     @Override
     public boolean equals(Object o) {
@@ -134,7 +137,7 @@ public class Employee {
                 Objects.equals(lastName, employee.lastName) &&
                 Objects.equals(username, employee.username) &&
                 Objects.equals(password, employee.password) &&
-                Objects.equals(animals, employee.animals);
+                Objects.equals(caretakers, employee.caretakers);
     }
 
     @Override

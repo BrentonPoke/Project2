@@ -13,6 +13,7 @@ import org.neo4j.ogm.annotation.GeneratedValue;
 import org.neo4j.ogm.annotation.Id;
 import org.neo4j.ogm.annotation.NodeEntity;
 import org.neo4j.ogm.annotation.Relationship;
+import p2.backend.Beans.Relationships.Diet;
 
 
 @NodeEntity
@@ -41,7 +42,8 @@ public class Food {
     @JoinTable(name = "Food_Animal", joinColumns = @JoinColumn(name = "foodId", referencedColumnName = "foodId"),
             inverseJoinColumns = @JoinColumn(name = "animalId", referencedColumnName = "animalId"))
     @JsonBackReference */
-    //private Set<Animal> animalFood;
+   @Relationship(type = "EATS", direction = Relationship.INCOMING)
+    private Set<Diet> animalFood;
 
     public Food(){
 
