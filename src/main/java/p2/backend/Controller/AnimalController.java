@@ -43,9 +43,8 @@ public class AnimalController {
     }
 
     @GetMapping("/{id}")
-    public @ResponseBody ResponseEntity<Animal> byAnimalID(@PathVariable Integer id){
-        Animal animal = animalService.byAnimalID(id);
-        return new ResponseEntity<Animal>(animal,HttpStatus.OK);
+    public Animal byAnimalID(@PathVariable Integer id){
+        return animalService.byAnimalID(id);
     }
 
     @GetMapping("/")

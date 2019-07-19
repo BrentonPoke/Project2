@@ -9,6 +9,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.event.ApplicationEnvironmentPreparedEvent;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.annotation.Bean;
+import org.springframework.data.neo4j.repository.config.EnableNeo4jRepositories;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.transaction.annotation.Transactional;
 import p2.backend.Beans.*;
@@ -23,7 +24,7 @@ import com.rollbar.notifier.Rollbar;
 
 
 @SpringBootApplication
-//@EnableNeo4jRepositories("p2.backend.Repository")
+@EnableNeo4jRepositories("p2.backend.Repository")
 public class BackendApplication implements CommandLineRunner {
 	@Bean
 	public BCryptPasswordEncoder bCryptPasswordEncoder() {
@@ -144,9 +145,7 @@ public class BackendApplication implements CommandLineRunner {
         animalRepository.save(bobcat);
         animalRepository.save(carpetPython);
         animalRepository.save(californiaSeaLion);
-        animalRepository.save(cheetah);
         animalRepository.save(giantPanda);
-        animalRepository.save(lion);
         animalRepository.save(manedWolf);
         animalRepository.save(orangutan);
         animalRepository.save(redPanda);
@@ -214,17 +213,17 @@ public class BackendApplication implements CommandLineRunner {
         food.add(rawMeat);
         bobcat.setFood(food);
 
-//        Set<Animal> animals = new HashSet<>();
-//        animals.add(lion);
-//        animals.add(cheetah);
-//
+        Set<Animal> animals = new HashSet<>();
+        animals.add(lion);
+        animals.add(cheetah);
+
 //        rawFish.setAnimalFood(animals);
 //        beef.setAnimalFood(animals);
 
         animalRepository.save(lion);
         animalRepository.save(cheetah);
-        foodRepository.save(rawFish);
-        foodRepository.save(beef);
+//        foodRepository.save(rawFish);
+//        foodRepository.save(beef);
 
         // Animal to Employee
         Set<Animal> animalsToEmployee = new HashSet<>();

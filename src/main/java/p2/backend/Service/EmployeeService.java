@@ -5,8 +5,6 @@ import org.springframework.stereotype.Service;
 import p2.backend.Beans.Employee;
 import p2.backend.Repository.EmployeeRepository;
 
-import javax.persistence.criteria.CriteriaBuilder;
-
 @Service
 public class EmployeeService {
 

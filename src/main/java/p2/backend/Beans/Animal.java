@@ -5,7 +5,6 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
-import javax.persistence.GenerationType;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -47,7 +46,7 @@ public class Animal {
     private String notes;
 
    // @ManyToMany(mappedBy = "animalFood")
-    @Relationship(type = "EATS")
+    @Relationship(type = "EATS", direction = Relationship.OUTGOING)
     private Set<Food> food;
 
 

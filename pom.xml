@@ -75,11 +75,11 @@
 			<artifactId>rollbar-web</artifactId>
 			<version>1.0.0</version>
 		</dependency>
-		<dependency>
-			<groupId>com.zaxxer</groupId>
-			<artifactId>HikariCP</artifactId>
-			<version>2.6.1</version>
-		</dependency>
+<!--		<dependency>-->
+<!--			<groupId>com.zaxxer</groupId>-->
+<!--			<artifactId>HikariCP</artifactId>-->
+<!--			<version>2.6.1</version>-->
+<!--		</dependency>-->
 		<dependency>
 			<groupId>org.meanbean</groupId>
 			<artifactId>meanbean</artifactId>
@@ -91,20 +91,15 @@
 			<artifactId>neo4j</artifactId>
 			<version>3.5.5</version>
 		</dependency>
-		<!--dependency>
+		<dependency>
 			<groupId>org.neo4j</groupId>
 			<artifactId>neo4j-ogm-embedded-driver</artifactId>
 			<version>${neo4j-ogm.version}</version>
 			<scope>test</scope>
-		</dependency-->
-		<dependency>
-			<groupId>org.neo4j</groupId>
-			<artifactId>neo4j-ogm-bolt-driver</artifactId>
-			<version>${neo4j-ogm.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.neo4j</groupId>
-			<artifactId>neo4j-ogm-http-driver</artifactId>
+			<artifactId>neo4j-ogm-bolt-driver</artifactId>
 			<version>${neo4j-ogm.version}</version>
 		</dependency>
 		<dependency>

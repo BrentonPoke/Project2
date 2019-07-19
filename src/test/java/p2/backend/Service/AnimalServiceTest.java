@@ -10,7 +10,6 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import p2.backend.Beans.Animal;
 import p2.backend.Repository.AnimalRepository;
 
-import javax.persistence.SecondaryTable;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;

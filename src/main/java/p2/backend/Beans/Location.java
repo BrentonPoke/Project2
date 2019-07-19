@@ -7,7 +7,6 @@ import com.fasterxml.jackson.databind.node.ObjectNode;
 
 //import javax.persistence.*;
 import java.util.Objects;
-import javax.persistence.GenerationType;
 import org.neo4j.ogm.annotation.GeneratedValue;
 import org.neo4j.ogm.annotation.Id;
 import org.neo4j.ogm.annotation.NodeEntity;
