@@ -3,6 +3,9 @@ package p2.backend.Beans;
 import com.fasterxml.jackson.annotation.*;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
+import java.util.HashSet;
+import lombok.Getter;
+import lombok.Setter;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -15,7 +18,8 @@ import org.neo4j.ogm.annotation.NodeEntity;
 import org.neo4j.ogm.annotation.Relationship;
 import p2.backend.Beans.Relationships.Diet;
 
-
+@Setter
+@Getter
 @NodeEntity
 @JsonIdentityInfo(
         generator = ObjectIdGenerators.PropertyGenerator.class,
@@ -24,7 +28,7 @@ public class Food {
 
     @Id
     @GeneratedValue// @Column(name = "foodId")
-    private int foodId;
+    private Integer foodId;
 
    // @Column(name = "foodName")
     private String foodName;
@@ -43,7 +47,7 @@ public class Food {
             inverseJoinColumns = @JoinColumn(name = "animalId", referencedColumnName = "animalId"))
     @JsonBackReference */
    @Relationship(type = "EATS", direction = Relationship.INCOMING)
-    private Set<Diet> animalFood;
+   Set<Animal> animals = new HashSet<>();
 
     public Food(){
 
@@ -56,45 +60,6 @@ public class Food {
         this.notes = notes;
     }
 
-    public int getFoodId() {
-        return foodId;
-    }
-
-    public void setFoodId(int foodId) {
-        this.foodId = foodId;
-    }
-
-    public String getFoodName() {
-        return foodName;
-    }
-
-    public void setFoodName(String foodName) {
-        this.foodName = foodName;
-    }
-
-    public int getAmount() {
-        return amount;
-    }
-
-    public void setAmount(int amount) {
-        this.amount = amount;
-    }
-
-    public String getNextDelivery() {
-        return nextDelivery;
-    }
-
-    public void setNextDelivery(String nextDelivery) {
-        this.nextDelivery = nextDelivery;
-    }
-
-    public String getNotes() {
-        return notes;
-    }
-
-    public void setNotes(String notes) {
-        this.notes = notes;
-    }
 
     @Override
     public boolean equals(Object o) {

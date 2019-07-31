@@ -7,13 +7,12 @@ import java.util.Objects;
 import org.neo4j.ogm.annotation.GeneratedValue;
 import org.neo4j.ogm.annotation.Id;
 import org.neo4j.ogm.annotation.NodeEntity;
-
 @NodeEntity
 //@Table(name = "Events")
 public class Events {
     @Id
     @GeneratedValue // @Column(name = "eventId")
-    private int eventId;
+    private Integer eventId;
 
    // @Column(name = "what")
     private String what;

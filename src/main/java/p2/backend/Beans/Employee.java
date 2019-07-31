@@ -26,7 +26,7 @@ import p2.backend.Beans.Relationships.Caretaker;
 public class Employee {
     @Id
     @GeneratedValue // @Column(name = "employeeId")
-    private int employeeId;
+    private Integer employeeId;
 
    // @Column(name = "firstName")
     private String firstName;
@@ -41,13 +41,13 @@ public class Employee {
     private String password;
 
    // @Column(name = "role")
-    private int role;
+    private Integer role;
 
    /* @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "Employee_Animal", joinColumns = @JoinColumn(name = "employeeId", referencedColumnName = "employeeId"),
             inverseJoinColumns = @JoinColumn(name = "animalId", referencedColumnName = "animalId")) */
    @Relationship(type = "FEEDS")
-    private Set<Caretaker> caretakers;
+    private Set<Animal> animals = new HashSet<>();
 
   public Employee() {
     }
@@ -60,13 +60,13 @@ public class Employee {
         this.role = role;
     }
 
-    public Employee(String firstName, String lastName, String username, String password, int role, Set<Caretaker> caretakers) {
+    public Employee(String firstName, String lastName, String username, String password, int role, Set<Animal> animals) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.username = username;
         this.password = password;
         this.role = role;
-        this.caretakers = caretakers;
+        this.animals = animals;
 
     }
 
@@ -117,12 +117,12 @@ public class Employee {
     public void setRole(int role) {
         this.role = role;
     }
-  public Set<Caretaker> getCaretakers() {
-    return caretakers;
+  public Set<Animal> getCaretakers() {
+    return animals;
   }
 
-  public void setCaretakers(Set<Caretaker> caretakers) {
-    this.caretakers = caretakers;
+  public void setCaretakers(Set<Animal> caretakers) {
+    this.animals = animals;
   }
 
 
@@ -137,7 +137,7 @@ public class Employee {
                 Objects.equals(lastName, employee.lastName) &&
                 Objects.equals(username, employee.username) &&
                 Objects.equals(password, employee.password) &&
-                Objects.equals(caretakers, employee.caretakers);
+                Objects.equals(animals, employee.animals);
     }
 
     @Override

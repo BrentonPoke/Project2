@@ -1,6 +1,7 @@
 package p2.backend;
 
 import com.rollbar.notifier.config.Config;
+import java.util.Collection;
 import org.neo4j.ogm.config.Configuration;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -13,6 +14,7 @@ import org.springframework.data.neo4j.repository.config.EnableNeo4jRepositories;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.transaction.annotation.Transactional;
 import p2.backend.Beans.*;
+import p2.backend.Beans.Relationships.Diet;
 import p2.backend.Repository.*;
 
 import java.util.HashMap;
@@ -24,7 +26,7 @@ import com.rollbar.notifier.Rollbar;
 
 
 @SpringBootApplication
-@EnableNeo4jRepositories("p2.backend.Repository")
+@EnableNeo4jRepositories(basePackages = "p2.backend.Repository")
 public class BackendApplication implements CommandLineRunner {
 	@Bean
 	public BCryptPasswordEncoder bCryptPasswordEncoder() {
@@ -54,6 +56,8 @@ public class BackendApplication implements CommandLineRunner {
 
     @Autowired
     FoodRepository foodRepository;
+    @Autowired
+    LocationRepository locationRepository;
 
 
     @Transactional
@@ -160,7 +164,7 @@ public class BackendApplication implements CommandLineRunner {
         animalRepository.save(giantPanda);
         animalRepository.save(manedWolf);
         animalRepository.save(orangutan);
-        animalRepository.save(redPanda);
+
         animalRepository.save(tiger);
         animalRepository.save(westernLowlandGorilla);
         animalRepository.save(lion);
@@ -198,22 +202,23 @@ public class BackendApplication implements CommandLineRunner {
         foodRepository.save(carrots);
 
 
-//        locationRepository.save(lAmericanAlligator);
-//        locationRepository.save(lAmericanBison);
-//        locationRepository.save(lAsianElephant);
-//        locationRepository.save(lAsianOtter);
-//        locationRepository.save(lBaldEagle);
-//        locationRepository.save(lBobcat);
-//        locationRepository.save(lCarpetPython);
-//        locationRepository.save(lCaliforniaSeaLion);
-//        locationRepository.save(lCheetah);
-//        locationRepository.save(lGiantPanda);
-//        locationRepository.save(lLion);
-//        locationRepository.save(lManedWolf);
-//        locationRepository.save(lOrangutan);
-//        locationRepository.save(lRedPanda);
-//        locationRepository.save(lTiger);
-//        locationRepository.save(lWesternLowlandGorilla);
+
+        locationRepository.save(lAmericanAlligator);
+        locationRepository.save(lAmericanBison);
+        locationRepository.save(lAsianElephant);
+        locationRepository.save(lAsianOtter);
+        locationRepository.save(lBaldEagle);
+        locationRepository.save(lBobcat);
+        locationRepository.save(lCarpetPython);
+        locationRepository.save(lCaliforniaSeaLion);
+        locationRepository.save(lCheetah);
+        locationRepository.save(lGiantPanda);
+        locationRepository.save(lLion);
+        locationRepository.save(lManedWolf);
+        locationRepository.save(lOrangutan);
+        locationRepository.save(lRedPanda);
+        locationRepository.save(lTiger);
+        locationRepository.save(lWesternLowlandGorilla);
 
 
         //Create links between everything

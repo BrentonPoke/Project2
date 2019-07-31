@@ -14,5 +14,5 @@ public interface AnimalRepository extends Neo4jRepository<Animal,Integer> {
 
     Animal findAnimalByAnimalName(String name);
     Set<Animal> findAnimalsByAnimalIdIsNotNull();
-    Animal findAnimalByAnimalId(int id);
+    Animal findAnimalByAnimalId(Integer id);
 }

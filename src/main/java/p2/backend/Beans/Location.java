@@ -8,6 +8,7 @@ import java.util.Objects;
 import org.neo4j.ogm.annotation.GeneratedValue;
 import org.neo4j.ogm.annotation.Id;
 import org.neo4j.ogm.annotation.NodeEntity;
+import org.neo4j.ogm.annotation.Relationship;
 
 @NodeEntity
 //@Table(name="Location")
@@ -15,7 +16,7 @@ public class Location {
 
     @Id
     @GeneratedValue //@Column(name = "locationId")
-    private int locationId;
+    private Integer locationId;
 
    // @Column(name = "latitude")
     private Double latitude;
@@ -26,7 +27,8 @@ public class Location {
    /* @OneToOne(fetch = FetchType.EAGER,cascade=CascadeType.ALL)
     @JoinColumn(name = "animalId")
     @JsonManagedReference */
-   //@Relationship(type = "LOCATED_AT", direction = Relationship.INCOMING)
+//   @Relationship(type = "LOCATED_AT", direction = Relationship.INCOMING)
+//   Animal animal;
 
   public Location() {
     }

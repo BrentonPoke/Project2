@@ -3,6 +3,9 @@ package p2.backend.Beans;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import java.util.HashSet;
+import lombok.Getter;
+import lombok.Setter;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -15,6 +18,8 @@ import org.neo4j.ogm.annotation.Relationship;
 import p2.backend.Beans.Relationships.Caretaker;
 import p2.backend.Beans.Relationships.Diet;
 
+@Getter
+@Setter
 @NodeEntity
 @JsonIdentityInfo(
         generator = ObjectIdGenerators.PropertyGenerator.class,
@@ -22,7 +27,7 @@ import p2.backend.Beans.Relationships.Diet;
 public class Animal {
     @Id
     @GeneratedValue //@Column(name = "animalId")
-    private int animalId;
+    private Integer animalId;
 
    // @Column(name = "animalName")
     private String animalName;
@@ -47,10 +52,11 @@ public class Animal {
 
    // @ManyToMany(mappedBy = "animalFood")
     @Relationship(type = "EATS")
-    private Set<Diet> food;
-
+    private Set<Food> food = new HashSet<>();
     @Relationship(type = "FEEDS", direction = Relationship.INCOMING)
-    private Set<Caretaker> employees;
+    private Set<Employee> employees = new HashSet<>();
+
+    //@Relationship(type = "LOCATED_AT")
     private Location site;
 
 
@@ -68,7 +74,7 @@ public class Animal {
         this.notes = notes;
     }
 
-    public Animal(String animalName, String scientificName, String funFact, String summary, int numOfAnimal, int tracking, String notes, Set<Diet> food) {
+    public Animal(String animalName, String scientificName, String funFact, String summary, int numOfAnimal, int tracking, String notes, Set<Food> food) {
         this.animalName = animalName;
         this.scientificName = scientificName;
         this.funFact = funFact;
@@ -76,92 +82,6 @@ public class Animal {
         this.numOfAnimal = numOfAnimal;
         this.tracking = tracking;
         this.notes = notes;
-        this.food = food;
-    }
-  public Set<Caretaker> getEmployees() {
-    return employees;
-  }
-
-  public void setEmployees(Set<Caretaker> employees) {
-    this.employees = employees;
-  }
-
-  public Location getSite() {
-    return site;
-  }
-
-  public void setSite(Location site) {
-    this.site = site;
-  }
-    public int getAnimalId() {
-        return animalId;
-    }
-
-    public void setAnimalId(int animalId) {
-        this.animalId = animalId;
-    }
-
-    public String getAnimalName() {
-        return animalName;
-    }
-
-    public void setAnimalName(String animalName) {
-        this.animalName = animalName;
-    }
-
-    public String getScientificName() {
-        return scientificName;
-    }
-
-    public void setScientificName(String scientificName) {
-        this.scientificName = scientificName;
-    }
-
-    public String getFunFact() {
-        return funFact;
-    }
-
-    public void setFunFact(String funFact) {
-        this.funFact = funFact;
-    }
-
-    public String getSummary() {
-        return summary;
-    }
-
-    public void setSummary(String summary) {
-        this.summary = summary;
-    }
-
-    public int getNumOfAnimal() {
-        return numOfAnimal;
-    }
-
-    public void setNumOfAnimal(int numOfAnimal) {
-        this.numOfAnimal = numOfAnimal;
-    }
-
-    public int getTracking() {
-        return tracking;
-    }
-
-    public void setTracking(int tracking) {
-        this.tracking = tracking;
-    }
-
-    public String getNotes() {
-        return notes;
-    }
-
-    public void setNotes(String notes) {
-        this.notes = notes;
-    }
-
-    public Set<Diet> getFood() {
-        return food;
-    }
-
-    public void setFood(Set<Diet> food) {
         this.food = food;
     }
 
