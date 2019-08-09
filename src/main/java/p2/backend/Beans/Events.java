@@ -4,15 +4,20 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 
 import java.util.Objects;
+import lombok.Getter;
+import lombok.Setter;
 import org.neo4j.ogm.annotation.GeneratedValue;
 import org.neo4j.ogm.annotation.Id;
 import org.neo4j.ogm.annotation.NodeEntity;
+
+@Setter
+@Getter
 @NodeEntity
 //@Table(name = "Events")
 public class Events {
     @Id
     @GeneratedValue // @Column(name = "eventId")
-    private Integer eventId;
+    private Long eventId;
 
    // @Column(name = "what")
     private String what;
@@ -33,37 +38,6 @@ public class Events {
         this.when = when;
     }
 
-    public int getEventId() {
-        return eventId;
-    }
-
-    public void setEventId(int eventId) {
-        this.eventId = eventId;
-    }
-
-    public String getWhat() {
-        return what;
-    }
-
-    public void setWhat(String what) {
-        this.what = what;
-    }
-
-    public String getWhere() {
-        return where;
-    }
-
-    public void setWhere(String where) {
-        this.where = where;
-    }
-
-    public String getWhen() {
-        return when;
-    }
-
-    public void setWhen(String when) {
-        this.when = when;
-    }
 
     @Override
     public boolean equals(Object o) {

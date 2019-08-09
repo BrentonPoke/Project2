@@ -5,18 +5,22 @@ import com.fasterxml.jackson.databind.node.ObjectNode;
 
 //import javax.persistence.*;
 import java.util.Objects;
+import lombok.Getter;
+import lombok.Setter;
 import org.neo4j.ogm.annotation.GeneratedValue;
 import org.neo4j.ogm.annotation.Id;
 import org.neo4j.ogm.annotation.NodeEntity;
 import org.neo4j.ogm.annotation.Relationship;
 
+@Setter
+@Getter
 @NodeEntity
 //@Table(name="Location")
 public class Location {
 
     @Id
     @GeneratedValue //@Column(name = "locationId")
-    private Integer locationId;
+    private Long locationId;
 
    // @Column(name = "latitude")
     private Double latitude;
@@ -27,8 +31,8 @@ public class Location {
    /* @OneToOne(fetch = FetchType.EAGER,cascade=CascadeType.ALL)
     @JoinColumn(name = "animalId")
     @JsonManagedReference */
-//   @Relationship(type = "LOCATED_AT", direction = Relationship.INCOMING)
-//   Animal animal;
+   @Relationship(type = "LOCATED_AT", direction = Relationship.INCOMING)
+   Animal animal;
 
   public Location() {
     }
@@ -38,29 +42,7 @@ public class Location {
         this.longitude = longitude;
     }
 
-    public int getLocationId() {
-        return locationId;
-    }
 
-    public void setLocationId(int locationId) {
-        this.locationId = locationId;
-    }
-
-    public Double getLatitude() {
-        return latitude;
-    }
-
-    public void setLatitude(Double latitude) {
-        this.latitude = latitude;
-    }
-
-    public Double getLongitude() {
-        return longitude;
-    }
-
-    public void setLongitude(Double longitude) {
-        this.longitude = longitude;
-    }
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

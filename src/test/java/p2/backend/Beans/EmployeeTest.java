@@ -50,8 +50,8 @@ class EmployeeFactory implements EquivalentFactory<Employee> {
                 "summary", 1, 1, "notes");
         Animal mockAnimal2 = new Animal("Spencer2", "sci name", "fun fact",
                 "summary", 1, 1, "notes");
-        mockAnimal1.setAnimalId(1);
-        mockAnimal2.setAnimalId(2);
+        mockAnimal1.setAnimalId(1L);
+        mockAnimal2.setAnimalId(2L);
         Set<Animal> animals = new HashSet<>();
         animals.add(mockAnimal1);
         animals.add(mockAnimal2);

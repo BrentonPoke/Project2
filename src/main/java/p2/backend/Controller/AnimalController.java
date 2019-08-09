@@ -12,7 +12,6 @@ import p2.backend.Beans.Food;
 import p2.backend.Service.AnimalService;
 
 import javax.annotation.PostConstruct;
-import java.util.HashSet;
 import java.util.Set;
 
 import static com.rollbar.notifier.config.ConfigBuilder.withAccessToken;
@@ -40,11 +39,6 @@ public class AnimalController {
     public @ResponseBody ResponseEntity<Animal> byAnimalName(@RequestParam(value="name") String name){
         Animal animal = animalService.byAnimal(name);
         return new ResponseEntity<Animal>(animal,HttpStatus.OK);
-    }
-
-    @GetMapping("/{id}")
-    public Animal byAnimalID(@PathVariable Integer id){
-        return animalService.byAnimalID(id);
     }
 
     @GetMapping("/")

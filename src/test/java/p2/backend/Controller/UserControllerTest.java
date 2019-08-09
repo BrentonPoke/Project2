@@ -68,12 +68,12 @@ public class UserControllerTest {
 
     @Test
     public void info() throws Exception{
-        mockAnimal.setAnimalId(1);
+        mockAnimal.setAnimalId(1L);
         animals.add(mockAnimal);
         //mockEmployee.setAnimals(animals);
         String exampleJson = "{\"username\": \"usrnm\", \"password\": \"psswrd\"}";
 
-        Mockito.when(employeeService.getByID(Mockito.anyInt())).thenReturn(mockEmployee);
+        Mockito.when(employeeService.getByID(Mockito.anyLong())).thenReturn(mockEmployee);
 
         MvcResult response = mockMvc.perform(MockMvcRequestBuilders.post("/users/info").accept(MediaType.APPLICATION_JSON).content(exampleJson).contentType(MediaType.APPLICATION_JSON)).andReturn();
         System.out.println(response.getResponse().getContentAsString());
@@ -110,7 +110,7 @@ public class UserControllerTest {
 
     @Test
     public void signIn() throws Exception{
-        mockEmployee.setEmployeeId(1);
+        mockEmployee.setEmployeeId(1L);
         String password = bCryptPasswordEncoder().encode("psswrd");
         mockEmployee.setPassword(password);
         animals.add(mockAnimal);
@@ -137,7 +137,7 @@ public class UserControllerTest {
 
     @Test
     public void signInFail() throws Exception{
-        mockEmployee.setEmployeeId(1);
+        mockEmployee.setEmployeeId(1L);
         String password = bCryptPasswordEncoder().encode("wrongpassword");
         mockEmployee.setPassword(password);
         animals.add(mockAnimal);

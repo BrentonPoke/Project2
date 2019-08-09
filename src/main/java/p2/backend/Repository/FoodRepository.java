@@ -6,5 +6,5 @@ import org.springframework.stereotype.Repository;
 import p2.backend.Beans.Food;
 
 @Repository
-public interface FoodRepository extends Neo4jRepository<Food, Integer> {
+public interface FoodRepository extends Neo4jRepository<Food, Long> {
 }

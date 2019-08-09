@@ -6,6 +6,7 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import java.util.HashSet;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.Singular;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -27,7 +28,7 @@ import p2.backend.Beans.Relationships.Diet;
 public class Animal {
     @Id
     @GeneratedValue //@Column(name = "animalId")
-    private Integer animalId;
+    private Long animalId;
 
    // @Column(name = "animalName")
     private String animalName;
@@ -56,7 +57,7 @@ public class Animal {
     @Relationship(type = "FEEDS", direction = Relationship.INCOMING)
     private Set<Employee> employees = new HashSet<>();
 
-    //@Relationship(type = "LOCATED_AT")
+    @Relationship(type = "LOCATED_AT")
     private Location site;
 
 

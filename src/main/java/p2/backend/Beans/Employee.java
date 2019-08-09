@@ -4,6 +4,9 @@ import com.fasterxml.jackson.annotation.*;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import java.util.HashSet;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.Singular;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -15,18 +18,18 @@ import org.neo4j.ogm.annotation.GeneratedValue;
 import org.neo4j.ogm.annotation.Id;
 import org.neo4j.ogm.annotation.NodeEntity;
 import org.neo4j.ogm.annotation.Relationship;
-import p2.backend.Beans.Relationships.Caretaker;
 
+@Setter
+@Getter
 @NodeEntity
 //Table(name = "Employee")
 @JsonIdentityInfo(
         generator=ObjectIdGenerators.PropertyGenerator.class,
         property="employeeId")
-
 public class Employee {
     @Id
     @GeneratedValue // @Column(name = "employeeId")
-    private Integer employeeId;
+    private Long employeeId;
 
    // @Column(name = "firstName")
     private String firstName;
@@ -69,61 +72,6 @@ public class Employee {
         this.animals = animals;
 
     }
-
-    public int getEmployeeId() {
-        return employeeId;
-    }
-
-    public void setEmployeeId(int employeeId) {
-        this.employeeId = employeeId;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public int getRole() {
-        return role;
-    }
-
-    public void setRole(int role) {
-        this.role = role;
-    }
-  public Set<Animal> getCaretakers() {
-    return animals;
-  }
-
-  public void setCaretakers(Set<Animal> caretakers) {
-    this.animals = animals;
-  }
 
 
     @Override

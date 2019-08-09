@@ -16,10 +16,10 @@ public class EmployeeService {
     }
 
     public Employee byUsername(String username){
-        return employeeRepository.findByUsername(username);
+        return employeeRepository.findEmployeeByUsername(username);
     }
 
-    public Employee getByID(Integer id){
+    public Employee getByID(Long id){
         return employeeRepository.findEmployeeByEmployeeId(id);
     }
 

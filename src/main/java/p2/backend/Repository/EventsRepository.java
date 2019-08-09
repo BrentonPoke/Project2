@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import p2.backend.Beans.Events;
 
 @Repository
-public interface EventsRepository extends Neo4jRepository<Events, Integer> {
+public interface EventsRepository extends Neo4jRepository<Events, Long> {
 
 }

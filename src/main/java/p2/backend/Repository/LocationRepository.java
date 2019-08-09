@@ -5,6 +5,6 @@ import org.springframework.stereotype.Repository;
 import p2.backend.Beans.Location;
 
 @Repository
-public interface LocationRepository extends Neo4jRepository<Location, Integer> {
+public interface LocationRepository extends Neo4jRepository<Location, Long> {
 
 }

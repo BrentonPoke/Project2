@@ -10,9 +10,8 @@ import p2.backend.Beans.Food;
 import java.util.Set;
 
 @Repository
-public interface AnimalRepository extends Neo4jRepository<Animal,Integer> {
+public interface AnimalRepository extends Neo4jRepository<Animal,Long> {
 
     Animal findAnimalByAnimalName(String name);
     Set<Animal> findAnimalsByAnimalIdIsNotNull();
-    Animal findAnimalByAnimalId(Integer id);
 }

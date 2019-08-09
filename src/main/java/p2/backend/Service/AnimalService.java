@@ -22,10 +22,6 @@ public class AnimalService {
         return animalRepository.findAnimalByAnimalName(name);
     }
 
-    public Animal byAnimalID(int id){
-        return animalRepository.findAnimalByAnimalId(id);
-    }
-
     public Set<Animal> allAnimals(){
         return animalRepository.findAnimalsByAnimalIdIsNotNull();
     }

@@ -152,11 +152,35 @@ public class BackendApplication implements CommandLineRunner {
         tiger.setSite(lTiger);
         westernLowlandGorilla.setSite(lWesternLowlandGorilla);
 
+        Set<Employee> employees = new HashSet<>();
+        HashSet<Animal> noopAnimals = new HashSet<>();
+        HashSet<Food> foods = new HashSet<>();
+        foods.add(rawMeat);
+        foods.add(rawFish);
+        americanAlligator.setFood(foods);
+        asianElephant.setFood(foods);
+        baldEagle.setFood(foods);
+        lAmericanAlligator.setAnimal(americanAlligator);
+        americanAlligator.setSite(lAmericanAlligator);
+        employees.add(noop);
+        employees.add(spencer);
+        americanAlligator.setEmployees(employees);
+        locationRepository.save(lAmericanAlligator);
+      noopAnimals.add(americanAlligator);
+      noopAnimals.add(asianElephant);
+      noopAnimals.add(baldEagle);
+      noop.setAnimals(noopAnimals);
+      spencer.setAnimals(noopAnimals);
+      rawFish.setAnimals(noopAnimals);
+      rawMeat.setAnimals(noopAnimals);
+      employeeRepository.save(noop);
+
         //save them all
-        animalRepository.save(americanAlligator);
+
         animalRepository.save(americanBison);
-        animalRepository.save(asianElephant);
         animalRepository.save(asianOtter);
+        animalRepository.save(americanAlligator);
+        animalRepository.save(asianElephant);
         animalRepository.save(baldEagle);
         animalRepository.save(bobcat);
         animalRepository.save(carpetPython);
@@ -164,7 +188,6 @@ public class BackendApplication implements CommandLineRunner {
         animalRepository.save(giantPanda);
         animalRepository.save(manedWolf);
         animalRepository.save(orangutan);
-
         animalRepository.save(tiger);
         animalRepository.save(westernLowlandGorilla);
         animalRepository.save(lion);
@@ -223,29 +246,44 @@ public class BackendApplication implements CommandLineRunner {
 
         //Create links between everything
         // food animal link
-//        Set<Food> food = new HashSet<>();
-//        food.add(rawFish);
-//        food.add(beef);
-//        lion.setFood(food);
-//        cheetah.setFood(food);
-//        food.add(rawMeat);
-//        bobcat.setFood(food);
+        Set<Food> food = new HashSet<>();
+        food.add(rawFish);
+        food.add(beef);
+        lion.setFood(food);
+        cheetah.setFood(food);
+        food.add(rawMeat);
+        bobcat.setFood(food);
 
-//        Set<Animal> animals = new HashSet<>();
-//        animals.add(lion);
-//        animals.add(cheetah);
+        Set<Animal> animals = new HashSet<>();
+        animals.add(lion);
+        animals.add(cheetah);
 
-//        rawFish.setAnimalFood(animals);
-//        beef.setAnimalFood(animals);
-//        foodRepository.save(rawFish);
-//        foodRepository.save(beef);
+        rawFish.setAnimals(animals);
+        beef.setAnimals(animals);
+        foodRepository.save(rawFish);
+        foodRepository.save(beef);
 
         // Animal to Employee
-//        Set<Animal> animalsToEmployee = new HashSet<>();
-//
-//        animalsToEmployee.add(giantPanda);
+        Set<Animal> animalsToEmployee = new HashSet<>();
+        food.clear();
+        food.add(bamboo);
+        food.add(rawFish);
+        redPanda.setFood(food);
+        giantPanda.setFood(food);
+        animalsToEmployee.add(giantPanda);
+        food.remove(bamboo);
+        bobcat.setFood(food);
+        animalsToEmployee.add(bobcat);
 
-//        jose.setAnimals(animalsToEmployee);
-//        florina.setAnimals(animalsToEmployee);
+      jose.setAnimals(animalsToEmployee);
+      florina.setAnimals(animalsToEmployee);
+        employees.clear();
+        employees.add(jose);
+        employees.add(florina);
+        bobcat.setEmployees(employees);
+        giantPanda.setEmployees(employees);
+
+        employeeRepository.save(jose);
+        employeeRepository.save(florina);
     }
 }
