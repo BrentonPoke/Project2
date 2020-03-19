@@ -1,6 +1,7 @@
 package p2.backend.Service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import p2.backend.Beans.Animal;
 import p2.backend.Beans.Employee;
@@ -23,7 +24,7 @@ public class AnimalService {
     }
 
     public Set<Animal> allAnimals(){
-        return animalRepository.findAnimalsByAnimalIdIsNotNull();
+        return animalRepository.findAll();
     }
 
     public void saveAnimal (Animal save){

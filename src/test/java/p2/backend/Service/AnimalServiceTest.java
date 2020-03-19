@@ -39,7 +39,7 @@ public class AnimalServiceTest {
         animals.add(new Animal("Spencer", "Mathematician turnedprogrammer","likes math", "loves math", 1, 1, "notes"));
         animals.add(new Animal("Spencer2", "Mathematician turnedprogrammer","likes math", "loves math", 1, 1, "notes"));
         animals.add(new Animal("Spencer3", "Mathematician turnedprogrammer","likes math", "loves math", 1, 1, "notes"));
-        when(animalRepository.findAnimalsByAnimalIdIsNotNull()).thenReturn(animals);
+        when(animalRepository.findAll()).thenReturn(animals);
 
         assertEquals(3, animalService.allAnimals().size());
     }
@@ -47,7 +47,7 @@ public class AnimalServiceTest {
     @Test
     public void testGetAnimalsException() throws Exception{
         Set<Animal> animals = new HashSet<Animal>();
-       when(animalRepository.findAnimalsByAnimalIdIsNotNull()).thenReturn(animals);
+       when(animalRepository.findAll()).thenReturn(animals);
 
         assertEquals(0, animalService.allAnimals().size());
 

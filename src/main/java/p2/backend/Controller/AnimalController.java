@@ -42,8 +42,8 @@ public class AnimalController {
     }
 
     @GetMapping("/")
-    public @ResponseBody ResponseEntity<Set<Animal>> getAnimals(){
-        return new ResponseEntity<Set<Animal>>(animalService.allAnimals(), HttpStatus.OK);
+    Set<Animal> getAnimals(){
+        return animalService.allAnimals();
     }
 
     @PostMapping("/save")

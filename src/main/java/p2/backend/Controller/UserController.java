@@ -41,11 +41,11 @@ public class UserController {
 		this.bCryptPasswordEncoder = bCryptPasswordEncoder;
 	}
 
-	@PostMapping("/info")
-	public @ResponseBody ResponseEntity<String> info(@RequestBody Employee user){
-		Employee emp = employeeService.getByID(user.getEmployeeId());
-		return new ResponseEntity<String>(emp.toString(),HttpStatus.OK);
-	}
+//	@GetMapping("/info")
+//	public Employee info(@RequestParam(value = "id") Integer id ){
+//		Employee emp = employeeService.getByID(id.longValue());
+//		return emp;
+//	}
 
 	@PostMapping("/user")
 	public @ResponseBody ResponseEntity<String> user(@RequestBody Employee user){
