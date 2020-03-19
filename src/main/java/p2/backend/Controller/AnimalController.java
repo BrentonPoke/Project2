@@ -36,9 +36,9 @@ public class AnimalController {
     }
 
     @GetMapping
-    public @ResponseBody ResponseEntity<Animal> byAnimalName(@RequestParam(value="name") String name){
+    public Animal byAnimalName(@RequestParam(value="name") String name){
         Animal animal = animalService.byAnimal(name);
-        return new ResponseEntity<Animal>(animal,HttpStatus.OK);
+        return animal;
     }
 
     @GetMapping("/")
