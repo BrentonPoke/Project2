@@ -73,7 +73,7 @@
 		<dependency>
 			<groupId>com.rollbar</groupId>
 			<artifactId>rollbar-web</artifactId>
-			<version>1.0.0</version>
+			<version>1.2.1</version>
 		</dependency>
 <!--		<dependency>-->
 <!--			<groupId>com.zaxxer</groupId>-->
@@ -89,13 +89,19 @@
 		<dependency>
 			<groupId>org.neo4j</groupId>
 			<artifactId>neo4j</artifactId>
-			<version>3.5.5</version>
+			<version>3.5.17</version>
+		</dependency>
+		<dependency>
+			<groupId>org.neo4j</groupId>
+			<artifactId>neo4j-ogm-embedded-driver</artifactId>
+			<version>${neo4j-ogm.version}</version>
+			<scope>test</scope>
 		</dependency>
 <!--		<dependency>-->
-<!--			<groupId>org.neo4j</groupId>-->
-<!--			<artifactId>neo4j-ogm-embedded-driver</artifactId>-->
-<!--			<version>${neo4j-ogm.version}</version>-->
-<!--			<scope>test</scope>-->
+<!--			<groupId>org.neo4j.driver</groupId>-->
+<!--			<artifactId>neo4j-java-driver-spring-boot-starter</artifactId>-->
+<!--			<version>4.0.1.1</version>-->
+<!--			<scope>compile</scope>-->
 <!--		</dependency>-->
 		<dependency>
 			<groupId>org.neo4j</groupId>
