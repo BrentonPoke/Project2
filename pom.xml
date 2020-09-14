@@ -27,7 +27,7 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-		<java.version>11</java.version>
+		<java.version>1.8</java.version>
 	</properties>
 
 	<dependencies>
@@ -89,7 +89,7 @@
 		<dependency>
 			<groupId>org.neo4j</groupId>
 			<artifactId>neo4j</artifactId>
-			<version>4.1.1</version> <!--Need server to be 3.5.17 -->
+			<version>3.5.17</version> <!--Need server to be 3.5.17 -->
 		</dependency>
 <!--		<dependency>-->
 <!--			<groupId>org.neo4j</groupId>-->
@@ -127,6 +127,22 @@
 				<artifactId>spring-boot-maven-plugin</artifactId>
 				<configuration>
 					<mainClass>p2.backend.BackendApplication</mainClass>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jar-plugin</artifactId>
+				<version>3.2.0</version>
+				<configuration>
+					<archive>
+						<manifest>
+							<packageName>p2.backend</packageName>
+						</manifest>
+						<manifestEntries>
+							<Created-By>Brenton Poke</Created-By>
+							<Main-Class>BackendApplication</Main-Class>
+						</manifestEntries>
+					</archive>
 				</configuration>
 			</plugin>
 			<plugin>
