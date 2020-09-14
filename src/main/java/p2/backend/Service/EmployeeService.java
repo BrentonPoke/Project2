@@ -16,7 +16,7 @@ public class EmployeeService {
     }
 
     public Employee byUsername(String username){
-        return employeeRepository.findEmployeeByUsername(username);
+        return employeeRepository.findEmployeeByUsernameEquals(username);
     }
 
     public Employee getByID(Long id){

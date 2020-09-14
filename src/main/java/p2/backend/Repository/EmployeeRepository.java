@@ -10,8 +10,8 @@ import java.util.List;
 
 @Repository
 public interface EmployeeRepository extends Neo4jRepository<Employee, Long> {
-    //@Query("MATCH (n:Employee) where n.username = {username} return n")
-    Employee findEmployeeByUsername(@Param("username") String username);
+    @Query("MATCH (n:Employee) where n.username = {username} return n")
+    Employee findEmployeeByUsernameEquals(@Param("username") String username);
     //@Query("MATCH (n:Employee) where n.id = {id} return n")
     Employee findEmployeeByEmployeeId(@Param("id") Long id);
 }
